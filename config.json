@@ -1,62 +1,35 @@
 {
     "access-log-file": null,
-    "access-password": null,
-    "algo-ext": true,
+    "algo": "cryptonight",
     "api": {
-        "id": null,
-        "worker-id": null
-    },
-    "http": {
-        "enabled": false,
-        "host": "127.0.0.1",
         "port": 0,
         "access-token": null,
+        "worker-id": null,
+        "ipv6": false,
         "restricted": true
     },
     "background": false,
     "bind": [
-        "0.0.0.0:80",
-        "0.0.0.0:443",
-        "0.0.0.0:8080",
-        "0.0.0.0:6666"
+        "0.0.0.0:3333"
     ],
     "colors": true,
-    "title": true,
-    "custom-diff": 0,
-    "custom-diff-stats": false,
-    "donate-level": 0,
+    "donate-level": 1,
     "log-file": null,
     "mode": "nicehash",
     "pools": [
         {
-            "algo": null,
-            "coin": null,
-            "url": "pool.hashvault.pro:80",
+            "url": "pool.hashvault.pro:3333",
             "user": "86QajpHYchbDdwDJpzqKxZFUa7ThqmvhTYTuXqGxfbCjBhTmiAQNTqF8166a6a6ytJUDp8G4jfoxc9cqV2TgsWPZJE8Prod",
             "pass": "PAteam",
-            "rig-id": null,
-            "keepalive": false,
-            "enabled": true,
+            "keepalive": true,
+            "variant": -1,
             "tls": false,
-            "tls-fingerprint": null,
-            "daemon": false
+            "tls-fingerprint": null
         }
     ],
     "retries": 2,
     "retry-pause": 1,
-    "reuse-timeout": 0,
-    "tls": {
-        "enabled": true,
-        "protocols": null,
-        "cert": null,
-        "cert_key": null,
-        "ciphers": null,
-        "ciphersuites": null,
-        "dhparam": null
-    },
-    "user-agent": null,
     "syslog": false,
     "verbose": false,
-    "watch": true,
     "workers": true
 }
