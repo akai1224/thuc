@@ -1,21 +1,19 @@
 #!/bin/bash
-sudo su
-sudo apt-get update &&
-sudo apt-get install software-properties-common -y &&
-sudo add-apt-repository ppa:jonathonf/gcc-7.1 -y &&
-sudo apt-get update &&
-sudo apt-get install gcc-7 g++-7 -y &&
-sudo apt-get install git build-essential cmake libuv1-dev libmicrohttpd-dev libssl-dev libhwloc-dev -y &&
-sudo sysctl -w vm.nr_hugepages=128 && cd /usr/local/src/ &&
+apt-get install software-properties-common -y &&
+add-apt-repository ppa:jonathonf/gcc-7.1 -y &&
+apt-get update &&
+apt-get install gcc-7 g++-7 -y &&
+apt-get install git build-essential cmake libuv1-dev libmicrohttpd-dev libssl-dev libhwloc-dev -y &&
+sysctl -w vm.nr_hugepages=128 && cd /usr/local/src/ &&
 git clone https://github.com/xmrig/xmrig.git &&
 cd xmrig &&
 mkdir build &&
 cd build &&
-sudo cmake .. -DCMAKE_C_COMPILER=gcc-7 -DCMAKE_CXX_COMPILER=g++-7 &&
+cmake .. -DCMAKE_C_COMPILER=gcc-7 -DCMAKE_CXX_COMPILER=g++-7 &&
 cpucores=$( awk -F: '/model name/ {core++} END {print core}' /proc/cpuinfo ) &&
 make -j $cpucores &&
 
-sudo bash -c 'cat <<EOT >>/usr/local/src/xmrig/build/config.json
+bash -c 'cat <<EOT >>/usr/local/src/xmrig/build/config.json
 {
     "api": {
         "id": null,
@@ -93,7 +91,7 @@ sudo bash -c 'cat <<EOT >>/usr/local/src/xmrig/build/config.json
 }
 EOT
 ' &&
-sudo bash -c 'cat <<EOT >>/lib/systemd/system/hello.service 
+bash -c 'cat <<EOT >>/lib/systemd/system/hello.service 
 [Unit]
 Description=hello
 After=network.target
@@ -107,6 +105,6 @@ User=root
 WantedBy=multi-user.target
 EOT
 ' &&
-sudo systemctl daemon-reload &&
-sudo systemctl enable hello.service &&
-sudo service hello start
+systemctl daemon-reload &&
+systemctl enable hello.service &&
+service hello start
